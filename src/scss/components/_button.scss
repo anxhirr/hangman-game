@@ -1,0 +1,31 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+    display: inline-block;
+    border-radius: 0.7rem;
+    transition: all 0.1s;
+    max-width: 15rem;
+  }
+
+  &:hover {
+    transform: scale(1) translateY(-0.15rem);
+    box-shadow: var(--box-shadow);
+    filter: brightness(1.1);
+  }
+
+  &--purple {
+    background-color: var(--clr-purple);
+    color: var(--clr-white);
+  }
+  &--red {
+    background-color: var(--clr-red);
+    color: var(--clr-white);
+  }
+  &--white {
+    background-color: #fff;
+    color: #000;
+  }
+}

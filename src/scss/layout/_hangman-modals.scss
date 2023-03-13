@@ -1,0 +1,161 @@
+.hangman-modal--box {
+  @include absCenter;
+  position: fixed;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  z-index: 1000;
+  max-width: 45rem;
+  width: 100%;
+}
+.hangman-settings-modal {
+  color: var(--clr-black--1);
+  padding: 2rem;
+  padding-bottom: 4rem;
+}
+
+.hangman-settings-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  // height: 90vh;
+  overflow-y: auto;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: -2rem;
+  }
+
+  &__close-icon--box {
+    cursor: pointer;
+    width: 4rem;
+    padding: 0.1rem;
+    border-radius: 2rem;
+  }
+
+  &__search {
+    &-input {
+      padding: 1.5rem;
+      padding-left: 4rem;
+      width: 80%;
+      background-image: url(../../assets/svg/search-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 0.8rem 1.25rem;
+      background-size: 3rem 3rem;
+      border: none;
+      box-shadow: var(--box-shadow-keyboard);
+      border-radius: 1rem;
+
+      transition: all 0.3s ease-in-out;
+
+      &:focus {
+        width: 100%;
+      }
+    }
+  }
+
+  // &__login--box {
+  //   margin-top: auto;
+  // }
+
+  &__login {
+    padding: 0 5rem;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    padding: 2rem;
+    background-color: var(--clr-white-2);
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: var(--box-shadow-keyboard);
+    z-index: 10;
+
+    &:hover {
+      background-color: var(--clr-white-1);
+    }
+  }
+
+  &__option {
+    text-align: left;
+    flex-grow: 1;
+
+    &-box {
+      position: relative;
+    }
+
+    &-icon {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &-detail {
+      font-size: 1.5rem;
+      text-transform: lowercase;
+    }
+
+    &-arrow--box {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-2rem);
+    transition: all 0.3s ease-in-out;
+
+    width: 100%;
+    background-color: hsl(220, 0%, 95%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 0 0 1rem 1rem;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0%);
+      z-index: 999;
+    }
+
+    &-list {
+      gap: 0.5rem;
+    }
+
+    &-item {
+      padding: 1rem;
+      padding-left: 3rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.hangman-confirm-modal {
+  color: var(--clr-black--1);
+  padding: 4rem 2rem;
+
+  &__text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  &__keys {
+    display: flex;
+    gap: 2rem;
+  }
+}

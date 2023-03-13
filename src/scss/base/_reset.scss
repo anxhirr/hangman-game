@@ -1,0 +1,70 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-size: clamp(100%, 1.5vw, 125%);
+
+  // @include responsive(1200) {
+  //   font-size: 56.25%; // 1rem = 9px, 9/16 = 56%
+  // }
+  // @include responsive(900) {
+  //   font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  // }
+  // @include responsive(1800) {
+  //   font-size: 75%; //1rem = 12px, 12/16 = 75%
+  // }
+}
+
+body {
+  box-sizing: border-box;
+  // font-size: var(--fs-body);
+  background-color: var(--clr-bgd) !important;
+}
+
+section {
+  display: block;
+  min-height: var(--section-min-height);
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--clr-white);
+}
+
+li {
+  list-style: none;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: inherit;
+}

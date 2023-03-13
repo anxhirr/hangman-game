@@ -1,0 +1,301 @@
+.hangman {
+  margin: 10rem 0;
+  color: var(--clr-black--1);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    background-color: #fff;
+    padding: 2.5rem 0;
+    padding-bottom: 1rem;
+    position: relative;
+    width: 100%;
+    font-family: monospace;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 25rem;
+    padding: 0 1rem;
+
+    &__heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    &__settings {
+      &-icon {
+        &--box {
+          width: 1.5rem;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &-user {
+    font-size: 3rem;
+  }
+
+  &-dashboard {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__hint {
+      padding: 0 0.3rem;
+      border-radius: 0.3rem;
+
+      &--pulse {
+        animation: keyboard-pulse 0.5s infinite;
+      }
+      &--hidden {
+        display: none;
+      }
+      &--visible {
+        display: inline-block;
+      }
+    }
+  }
+
+  &-new-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-drawing {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include responsive(400) {
+      transform: translateX(-5rem);
+    }
+
+    &__ground {
+      width: 15rem;
+      height: 0.5rem;
+      background: var(--clr-black--1);
+    }
+    &__stand {
+      height: 13rem;
+      width: 0.5rem;
+      background: var(--clr-black--1);
+    }
+    &__right {
+      width: 10rem;
+      height: 0.5rem;
+      margin-left: 9.5rem;
+      background: var(--clr-black--1);
+    }
+    &__down {
+      position: absolute;
+      height: 1.5rem;
+      width: 0.5rem;
+      top: 0;
+      right: 0;
+      background: var(--clr-black--1);
+    }
+    &__head {
+      position: absolute;
+      height: 2rem;
+      width: 2rem;
+      border: 0.5rem solid var(--clr-black--1);
+      border-radius: 100%;
+      top: 1rem;
+      right: -0.8rem;
+    }
+    &__body {
+      position: absolute;
+      height: 4rem;
+      width: 0.5rem;
+      top: 2.5rem;
+      right: 0;
+      background: var(--clr-black--1);
+    }
+    &__left-arm {
+      position: absolute;
+      height: 0.5rem;
+      width: 3rem;
+      top: 4.5rem;
+      right: 0.5rem;
+      transform-origin: bottom right;
+      rotate: 45deg;
+      background: var(--clr-black--1);
+    }
+    &__right-arm {
+      position: absolute;
+      height: 0.5rem;
+      width: 3rem;
+      top: 4.5rem;
+      right: -3rem;
+      transform-origin: bottom left;
+      rotate: -45deg;
+      background: var(--clr-black--1);
+    }
+    &__left-leg {
+      position: absolute;
+      height: 0.5rem;
+      width: 3rem;
+      top: 6rem;
+      right: 0;
+      transform-origin: bottom right;
+      rotate: -60deg;
+      background: var(--clr-black--1);
+    }
+    &__right-leg {
+      position: absolute;
+      height: 0.5rem;
+      width: 3rem;
+      top: 6rem;
+      right: -2.5rem;
+      transform-origin: bottom left;
+      rotate: 60deg;
+      background: var(--clr-black--1);
+    }
+
+    &--shake &__left-arm {
+      animation: left-arm-rotate 0.2s infinite;
+    }
+    &--shake &__right-arm {
+      animation: right-arm-rotate 0.2s infinite;
+    }
+    &--shake &__left-leg {
+      animation: left-leg-rotate 0.2s infinite;
+    }
+    &--shake &__right-leg {
+      animation: right-leg-rotate 0.2s infinite;
+    }
+  }
+
+  &-word {
+    font-size: 2.5rem;
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: 1.2rem;
+    text-transform: uppercase;
+    font-family: monospace;
+
+    &__letter {
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      &-box {
+        flex: 1;
+        padding: 0 1rem;
+        border-bottom: 0.5rem solid var(--clr-black--1);
+        text-align: center;
+        position: relative;
+
+        @include responsive(600) {
+          padding: 0;
+        }
+      }
+
+      &--hidden {
+        visibility: hidden;
+        opacity: 0;
+        top: 10rem;
+      }
+      &--visible {
+        animation: slide-up 0.5s ease forwards;
+      }
+      &--red {
+        color: var(--clr-red--strong);
+      }
+      &--black {
+        color: var(--clr-black--1);
+      }
+
+      &--winner {
+        color: var(--clr-green);
+      }
+    }
+  }
+
+  &-keyboard {
+    max-width: 50rem;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 0.65rem;
+    width: 100%;
+    margin-top: 2rem;
+
+    &__key {
+      grid-column: span 2;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-transform: uppercase;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: var(--box-shadow-keyboard);
+      background: var(--clr-white-2);
+      border-radius: 0.8rem;
+      animation: keyboard-zoom-out 1s forwards;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+
+      @include responsive(600) {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      &:hover:not(&--wrong, &--correct, &--no-hover) {
+        animation: keyboard-zoom-in 0.5s forwards;
+      }
+
+      &--no-hover {
+        cursor: default;
+      }
+
+      &--wrong {
+        cursor: default;
+        background: var(--clr-blue--1);
+        color: var(--clr-white);
+      }
+      &--correct {
+        background: var(--clr-green);
+        color: var(--clr-white);
+      }
+
+      &--hint {
+        animation: keyboard-pulse 0.5s infinite;
+      }
+
+      // &--next-word,
+      &--new-game {
+        background-color: #fff;
+      }
+
+      &--next-word {
+        grid-column: span 4;
+      }
+
+      &--new-game {
+        // flex-grow: 0;
+        padding: 1rem 1.5rem;
+      }
+      &--pulse {
+        animation: keyboard-pulse 0.5s infinite;
+      }
+    }
+  }
+}

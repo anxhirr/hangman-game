@@ -1,0 +1,40 @@
+.card-game {
+  padding: 10rem 2rem;
+  background-image: var(--linear-blue-purple);
+
+  &__content {
+    max-width: 60rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__button {
+    color: #fff;
+    background-color: var(--clr-purple);
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+
+    @include responsive(600) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @include responsive(400) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__card {
+    background-color: var(--clr-white);
+    box-shadow: var(--box-shadow);
+    font-size: 5rem;
+    cursor: pointer;
+    color: var(--clr-black--1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 4rem;
+  }
+}
